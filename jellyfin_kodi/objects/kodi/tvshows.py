@@ -3,7 +3,7 @@ from __future__ import division, absolute_import, print_function, unicode_litera
 
 ##################################################################################################
 
-from ...helper import LazyLogger
+from ...helper import values, LazyLogger, kodi_version
 
 from . import queries as QU
 from .kodi import Kodi
@@ -105,10 +105,16 @@ class TVShows(Kodi):
         self.cursor.execute(QU.update_unique_id, args)
 
     def add(self, *args):
-        self.cursor.execute(QU.add_tvshow, args)
+        if kodi_version() < 20:
+            self.cursor.execute(QU.add_tvshow_19, args)
+        else:
+            self.cursor.execute(QU.add_tvshow, args)
 
     def update(self, *args):
-        self.cursor.execute(QU.update_tvshow, args)
+        if kodi_version() < 20:
+            self.cursor.execute(QU.update_tvshow_19, args)
+        else:
+            self.cursor.execute(QU.update_tvshow, args)
 
     def link(self, *args):
         self.cursor.execute(QU.update_tvshow_link, args)

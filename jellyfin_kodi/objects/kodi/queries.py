@@ -445,9 +445,28 @@ add_musicvideo_obj = [
     "{Index}",
     "{Premiere}",
 ]
-add_tvshow = """
+add_tvshow_19 = """
 INSERT INTO     tvshow(idShow, c00, c01, c02, c04, c05, c08, c09, c10, c12, c13, c14, c15)
 VALUES          (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+"""
+add_tvshow_obj_19 = [
+    "{ShowId}",
+    "{Title}",
+    "{Plot}",
+    "{Status}",
+    "{RatingId}",
+    "{Premiere}",
+    "{Genre}",
+    "{Title}",
+    "disintegrate browse bug",
+    "{Unique}",
+    "{Mpaa}",
+    "{Studio}",
+    "{SortTitle}",
+]
+add_tvshow = """
+INSERT INTO     tvshow(idShow, c00, c01, c02, c04, c05, c08, c09, c10, c12, c13, c14, c15, c16)
+VALUES          (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 """
 add_tvshow_obj = [
     "{ShowId}",
@@ -463,6 +482,7 @@ add_tvshow_obj = [
     "{Mpaa}",
     "{Studio}",
     "{SortTitle}",
+    "{Trailer}",
 ]
 add_season = """
 INSERT INTO     seasons(idSeason, idShow, season)
@@ -690,10 +710,31 @@ update_musicvideo_obj = [
     "{Premiere}",
     "{MvideoId}",
 ]
-update_tvshow = """
+update_tvshow_19 = """
 UPDATE      tvshow
 SET         c00 = ?, c01 = ?, c02 = ?, c04 = ?, c05 = ?, c08 = ?, c09 = ?, c10 = ?,
             c12 = ?, c13 = ?, c14 = ?, c15 = ?
+WHERE       idShow = ?
+"""
+update_tvshow_obj_19 = [
+    "{Title}",
+    "{Plot}",
+    "{Status}",
+    "{RatingId}",
+    "{Premiere}",
+    "{Genre}",
+    "{Title}",
+    "disintegrate browse bug",
+    "{Unique}",
+    "{Mpaa}",
+    "{Studio}",
+    "{SortTitle}",
+    "{ShowId}",
+]
+update_tvshow = """
+UPDATE      tvshow
+SET         c00 = ?, c01 = ?, c02 = ?, c04 = ?, c05 = ?, c08 = ?, c09 = ?, c10 = ?,
+            c12 = ?, c13 = ?, c14 = ?, c15 = ?, c16 = ?
 WHERE       idShow = ?
 """
 update_tvshow_obj = [
@@ -709,6 +750,7 @@ update_tvshow_obj = [
     "{Mpaa}",
     "{Studio}",
     "{SortTitle}",
+    "{Trailer}",
     "{ShowId}",
 ]
 update_tvshow_link = """
